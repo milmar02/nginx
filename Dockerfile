@@ -1,5 +1,4 @@
-ARG IMAGE=ubuntu:20.04
-FROM $IMAGE as builder
+FROM ubuntu:latest as builder
 
 COPY sources.list /etc/apt/sources.list
 ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /tini
