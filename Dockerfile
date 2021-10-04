@@ -1,4 +1,4 @@
-FROM ubuntu:latest as builder
+FROM ubuntu:latest
 
 COPY sources.list /etc/apt/sources.list
 ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /tini
