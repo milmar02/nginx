@@ -32,7 +32,7 @@ RUN curl -LSs http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -O        
 RUN chgrp -R 0 /tmp/ && \
     chmod -R g+rwX /tmp/
 
-RUN make
+RUN make -j $(nproc)
 RUN make install
 RUN rm -rf /tmp/*
 
