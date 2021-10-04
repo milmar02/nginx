@@ -14,7 +14,8 @@ RUN apk update && \
       alpine-sdk  \
       openssl-dev \
       pcre-dev    \
-      zlib-dev
+      zlib-dev    \
+      curl
 
 RUN curl -LSs http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -O                                             && \
     tar xf nginx-${NGINX_VERSION}.tar.gz                                                                             && \
