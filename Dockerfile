@@ -27,10 +27,14 @@ RUN curl -LSs http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -O        
     ./configure                                                                                                         \
       --add-module=./ngx_http_proxy_connect_module                                                                      \
       --sbin-path=/usr/sbin/nginx                                                                                       \
-      --with-cc-opt='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' && \
-    make                                                                                                  && \
-    make install                                                                                                     && \
-    rm -rf /tmp/*
+      --with-cc-opt='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC'
+
+RUN chgrp -R 0 /tmp/ && \
+    chmod -R g+rwX /tmp/
+
+RUN make
+RUN make install
+RUN rm -rf /tmp/*
 
 ####
 ## application deployment
