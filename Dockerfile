@@ -36,8 +36,10 @@ RUN apt-get install -y --no-install-recommends libssl-dev && \
     apt-get autoremove --yes && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-	RUN chgrp -R 0 /usr/local/nginx/ && \
-	    chmod -R g+rwX /usr/local/nginx/
+RUN chgrp -R 0 /usr/local/nginx/ && \
+    chmod -R g+rwX /usr/local/nginx/
+RUN chgrp -R 0 /var/log/ && \
+    chmod -R g+rwX /var/log/
 
 EXPOSE 8888
 
