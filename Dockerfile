@@ -8,6 +8,8 @@ ENV NGINX_VERSION 1.17.5
 ####
 
 WORKDIR /tmp
+RUN chgrp -R 0 /tmp/ && \
+    chmod -R g+rwX /tmp/
 
 RUN apk update && \
     apk add       \
@@ -35,6 +37,9 @@ RUN curl -LSs http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -O        
 ####
 
 WORKDIR /
+
+RUN chgrp -R 0 /usr/local/nginx/ && \
+    chmod -R g+rwX /usr/local/nginx/
 
 COPY ./nginx.conf /usr/local/nginx/conf/nginx.conf
 
